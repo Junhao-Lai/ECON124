@@ -1,1 +1,1 @@
-# ECON124
+# ECON124 Final Proposal
