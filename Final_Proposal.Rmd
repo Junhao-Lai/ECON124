@@ -1,0 +1,42 @@
+---
+title: "Final Proposal"
+author: "Chloe Wong, Hanwen Yang, Junhao Lai"
+date: '2024-03-01'
+output:
+  pdf_document: 
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+# some useful settings
+knitr::opts_chunk$set(echo = TRUE, tidy.opts = list(width.cutoff = 55), tidy = TRUE, fig.align="center")
+```
+
+# Problem 1
+
+## Part (a)
+
+```{r}
+setwd("/Users/laix1/OneDrive/Desktop/Final_Proposal")
+library(haven)
+
+covid_data <- data.frame(read_dta("C19CS Data.dta"))
+
+head(covid_data)
+
+
+```
+
+
+
+
+## Part (b)
+
+Here's how to format the dimensions of a figure created by your code.
+
+```{r fig.height = 3, fig.width = 3}
+set.seed(0)
+x <- rnorm(100)
+y <- rnorm(100)
+plot(x,y)
+```
