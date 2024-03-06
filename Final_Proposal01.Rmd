@@ -12,17 +12,19 @@ output:
 knitr::opts_chunk$set(echo = TRUE, tidy.opts = list(width.cutoff = 55), tidy = TRUE, fig.align="center")
 ```
 
-# Problem 1
+# Introduction 
 
 ## Part (a)
 
 ```{r}
-setwd("/Users/laix1/OneDrive/Desktop/Final_Proposal")
+#setwd("/Users/laix1/OneDrive/Desktop/Final_Proposal")
+knitr::opts_knit$set(root.dir = 'C:/Users/laix1/OneDrive/Desktop/Final_Proposal/ECON124')
+
 library(haven)
 
 covid_data <- data.frame(read_dta("C19CS Data.dta"))
 
-head(covid_data)
+dim(covid_data)
 
 
 ```
@@ -32,11 +34,15 @@ head(covid_data)
 
 ## Part (b)
 
-Here's how to format the dimensions of a figure created by your code.
 
-```{r fig.height = 3, fig.width = 3}
-set.seed(0)
-x <- rnorm(100)
-y <- rnorm(100)
-plot(x,y)
-```
+
+# Data
+
+
+
+# Methodology 
+
+
+# Main Results
+
+
