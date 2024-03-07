@@ -14,7 +14,8 @@ knitr::opts_chunk$set(echo = TRUE, tidy.opts = list(width.cutoff = 55), tidy = T
 
 # Introduction 
 
-## Part (a)
+The dataset, available at "https://www.openicpsr.org/openicpsr/project/131022/version/V3/view?path=/openicpsr/131022/fcr:versions/V3/C19CS-Data-Labeled.xlsx&type=file", focuses on adults nearing retirement age who have been particularly impacted by the recent economic downturn due to COVID-19. The research examines how the early stages of the pandemic have disrupted the work lives and mental health of Americans aged 55 and older.
+  In our research, we want to find ....(will be finished by chloe)
 
 ```{r}
 #setwd("/Users/laix1/OneDrive/Desktop/Final_Proposal")
@@ -24,16 +25,16 @@ library(haven)
 
 covid_data <- data.frame(read_dta("C19CS Data.dta"))
 
+
 dim(covid_data)
 
 
 ```
-
-
-
+```{R}
+names(covid_data)
+```
 
 ## Part (b)
-
 
 
 # Data
