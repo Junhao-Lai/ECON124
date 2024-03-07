@@ -44,5 +44,17 @@ dim(covid_data)
 
 
 # Main Results
+we first did a raw correlation on the smoking status and COVID-19 positivity 
+```{r}
 
+SM_data <- na.omit(covid_data[,c(201,851),]) #
+head(SM_data)
+
+naive_SM_OLS <- glm(t5_cov_self_t ~ t0_smoke, data = SM_data)
+summary(naive_SM_OLS)
+
+
+
+```
+A person what has an active smoking status is associated with a 2.4% increased in the chance of tested positive for COVID-19 past month.
 
