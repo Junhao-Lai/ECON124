@@ -14,9 +14,8 @@ knitr::opts_chunk$set(echo = TRUE, tidy.opts = list(width.cutoff = 55), tidy = T
 
 # Introduction 
 
-The dataset, available at "https://www.openicpsr.org/openicpsr/project/131022/version/V3/view?path=/openicpsr/131022/fcr:versions/V3/C19CS-Data-Labeled.xlsx&type=file", focuses on adults nearing retirement age who have been particularly impacted by the recent economic downturn due to COVID-19. The research examines how the early stages of the pandemic have disrupted the work lives and mental health of Americans aged 55 and older.
-  In our research, we want to find ....(will be finished  tentative) the correlation betweenthe outcome variable tested positive for covid-19 in the past month (y) and their smoking status as one of the regressor (x).    
-  
+Our research looks at how the quality of living arrangements affects how satisfied older adults are with their lives, especially during the COVID-19 economic downturn. We're using data from a study focusing on people aged 55 and up during the early stages of the pandemic, "https://www.openicpsr.org/openicpsr/project/131022/version/V3/view?path=/openicpsr/131022/fcr:versions/V3/C19CS-Data-Labeled.xlsx&type=file"
+The main question we want to find out is whether there's a direct link between living conditions and life satisfaction, or if we can predict satisfaction based on how good someone's living situation is. We're focusing on how people rate their own health as our main measure (Y), and one thing we're looking at is how likely it is that they'll run out of money because of COVID-19 (X). We're using different statistical methods like simple logit regression, lasso regression, and ridge regression to figure out these relationships and understand how living conditions, health, and happiness are connected during tough economic times.
   
 
 ```{r}
@@ -29,11 +28,10 @@ covid_data <- data.frame(read_dta("C19CS Data.dta"))
 
 
 dim(covid_data)
-
-
+colnames(covid_data)[c(204,451)]
 ```
 ```{R}
-names(covid_data)
+#names(covid_data)
 ```
 
 ## Part (b)
