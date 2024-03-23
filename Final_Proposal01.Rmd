@@ -15,12 +15,12 @@ knitr::opts_chunk$set(echo = TRUE, tidy.opts = list(width.cutoff = 55), tidy = T
 # Introduction 
 
 Our research looks at how the quality of living arrangements affects how satisfied older adults are with their lives, especially during the COVID-19 economic downturn. We're using data from a study focusing on people aged 55 and up during the early stages of the pandemic, "https://www.openicpsr.org/openicpsr/project/131022/version/V3/view?path=/openicpsr/131022/fcr:versions/V3/C19CS-Data-Labeled.xlsx&type=file"
-The main question we want to find out is whether there's a direct link between living conditions and life satisfaction, or if we can predict satisfaction based on how good someone's living situation is. We're focusing on how people rate their own health as our main measure (Y), and one thing we're looking at is how likely it is that they'll run out of money because of COVID-19 (X). We're using different statistical methods like simple logit regression, lasso regression, and ridge regression to figure out these relationships and understand how living conditions, health, and happiness are connected during tough economic times.
+The main question we want to find out is whether there's a direct link between living conditions and life satisfaction, in other words we are using this public data to study the casual effect on its life satisfaction rating based on how good someone's living situation is. We're focusing on how people rate their own health as our main measure (Y), and one thing we're looking at is how likely it is that they'll run out of money because of COVID-19 (X). We're using different statistical methods like simple logit regression and post-lasso to figure out these relationships and understand how living conditions, health, and happiness are connected during tough economic times.
   
 
 ```{r}
 #setwd("/Users/laix1/OneDrive/Desktop/Final_Proposal")
-knitr::opts_knit$set(root.dir = 'C:/Users/laix1/OneDrive/Desktop/Final_Proposal/ECON124')
+knitr::opts_knit$set(root.dir = 'C:/Users/laix1/OneDrive/Desktop/final/ECON124')
 
 library(haven)
 
