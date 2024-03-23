@@ -52,9 +52,18 @@ data2 <- data.frame(t12_satisfy = selected_data$t12_satisfy,  t12_drink = select
 
 
 
-
 ##
 post_lasso <- glm(t12_satisfy ~., data = data2)
 
-coef(summary(post_lasso))["livingalone",]
+coef(summary(post_lasso))["t12_drink",]
+
+
+# Counter-factual prediction 
+cfact_data <- data2
+cfact_data$t12_drink <- 10
+mean(predict(post_lasso, cfact_data))
+
+# Compare with current value
+
+mean(selected_data$t12_satisfy)
 
