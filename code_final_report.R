@@ -6,11 +6,11 @@ covid_data <- data.frame(read_dta("C19CS Data.dta"))
 selected_data <- covid_data[, 1728:1867]
 
 #ESTIMATE a model 
-selected_data <- na.omit(selected_data[selected_data$t12_reside, ])
+#selected_data <- na.omit(selected_data[selected_data$t12_reside, ])
 selected_data <- na.omit(selected_data[selected_data$t12_drink, ])
 
-selected_data$t12_reside <- factor(selected_data$t12_reside)
-selected_data$t12_drink <- factor(selected_data$t12_drink)
+#selected_data$t12_reside <- factor(selected_data$t12_reside)
+#selected_data$t12_drink <- factor(selected_data$t12_drink)
 
 #selected_data <- na.omit(selected_data[selected_data$t12_satisfy, ])
 #selected_data <- na.omit(selected_data[selected_data$t12_slfhlth, ])
