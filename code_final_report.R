@@ -16,6 +16,15 @@ selected_data <- na.omit(selected_data[selected_data$t12_drink, ])
 #selected_data <- na.omit(selected_data[selected_data$t12_slfhlth, ])
 #selected_data <- na.omit(selected_data[selected_data$t12_isolate, ])
 
+# Regress self-satisfaction rate on alcohol drinking rate
+naive_OLS <- glm(t12_satisfy ~ t12_drink, data = selected_data)
+summary(naive_OLS)
+# one unit increase in the alcoholic drinks in the past week is associated with a 4.27% increased in the satisfaction in life now 
+
+
+hist(t12_satisfy)
+hist(selected_data$t12_satisfy, main = "Histogram of t12_satisfy", xlab = "Values", ylab = "Frequency")
+
 
 OLS_model <- glm(t12_satisfy ~ t12_drink + t12_reside, data = selected_data)
 coef(summary(OLS_model))
@@ -54,16 +63,19 @@ data2 <- data.frame(t12_satisfy = selected_data$t12_satisfy,  t12_drink = select
 
 ##
 post_lasso <- glm(t12_satisfy ~., data = data2)
-
 coef(summary(post_lasso))["t12_drink",]
 
 
 # Counter-factual prediction 
 cfact_data <- data2
-cfact_data$t12_drink <- 10
+cfact_data$t12_drink <- 5
 mean(predict(post_lasso, cfact_data))
 
 # Compare with current value
-
 mean(selected_data$t12_satisfy)
+
+#-----------------------------------------------------
+naive_OLS <- 
+
+
 
