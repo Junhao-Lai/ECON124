@@ -82,9 +82,6 @@ plot(selected_data$t12_test_ff,selected_data$t12_vac_mo,
      cex = 1.5)
 ---------------------------------------
 
-
-
-
 OLS_model <- glm(t12_satisfy ~ t12_drink + t12_reside, data = selected_data)
 coef(summary(OLS_model))
 
@@ -111,7 +108,7 @@ nonzero_coef_ind <- union(y_nonzero_coef_ind, d_nonzero_coef_ind)
 
 
 #Step 4
-controls = model.matrix(~(t12_slfhlth + t12_slfmem + poly(t12_isolate, 2, raw = TRUE))^2, data = selected_data)[,-1]
+controls = model.matrix(~(t12_slfhlth + t12_slfmem + poly(t12_pla_tot, 2, raw = TRUE))^2, data = selected_data)[,-1]
 
 length(nonzero_coef_ind)
 cat(length(nonzero_coef_ind), "controls were included out of", ncol(controls))
@@ -132,6 +129,36 @@ mean(predict(post_lasso, cfact_data))
 mean(selected_data$t12_satisfy)
 
 #-----------------------------------------------------
+#2nd post lasso
+# Find out how enjoyed life affect the intensity of exercise in a week
+
+OLS_model2 <- glm(t12_exerc ~ t12_cesd6+t12_slfhlth, data = selected_data)
+coef(summary(OLS_model2))
+
+y_model <- glmnetUtils::cv.glmnet(t12_exerc ~ (t12_slfmem + t12_promis1 + t12_promis2 + t12_promis3 + t12_promis4 + t12_promis4 + t12_promis5)^2, data = selected_data, nfold = 3, use.model.frame = TRUE)
+
+d_model <- glmnetUtils::cv.glmnet(t12_cesd6 ~ (t12_slfmem + t12_promis1 + t12_promis2 + t12_promis3 + t12_promis4 + t12_promis4 + t12_promis5)^2, data = selected_data, nfold = 3, use.model.frame = TRUE)
 
 
+y_nonzero_coef_ind <- which(coef(y_model, s = "lambda.min")[-1] !=0)
+d_nonzero_coef_ind <- which(coef(d_model, s = "lambda.min")[-1] !=0)
+nonzero_coef_ind <- union(y_nonzero_coef_ind, d_nonzero_coef_ind)
 
+controls = model.matrix(~(t12_slfmem + t12_promis1 + t12_promis2 + t12_promis3 + t12_promis4 + t12_promis4 + t12_promis5)^2, data = selected_data)[,-1]
+
+length(nonzero_coef_ind)
+cat(length(nonzero_coef_ind), "controls were included out of", ncol(controls))
+
+data2 <- data.frame(t12_exerc = selected_data$t12_exerc, t12_cesd6 = selected_data$t12_cesd6, controls[, nonzero_coef_ind])
+
+post_lasso <- glm(t12_exerc ~., data = data2)
+
+coef(summary(post_lasso))["t12_cesd6",]
+
+# Counter-factual prediction 
+cfact_data <- data2
+cfact_data$t12_cesd6 <- 1 # if the person is enjoying life 
+mean(predict(post_lasso, cfact_data))
+
+# Compare with current value
+mean(selected_data$t12_exerc)
