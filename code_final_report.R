@@ -97,10 +97,10 @@ coef(summary(OLS_model))
 
 # Step #1
 library(glmnetUtils)
-y_model <- glmnetUtils::cv.glmnet(t12_satisfy ~ (t12_slfhlth + t12_slfmem + poly(t12_isolate, 2, raw = TRUE))^2, data = selected_data, nfold = 3, use.model.frame = TRUE)
+y_model <- glmnetUtils::cv.glmnet(t12_satisfy ~ (t12_slfhlth + t12_slfmem + poly(t12_pla_tot, 2, raw = TRUE))^2, data = selected_data, nfold = 3, use.model.frame = TRUE)
 
 # Step #2
-d_model <- glmnetUtils::cv.glmnet(t12_drink ~ (t12_slfhlth + t12_slfmem + poly(t12_isolate, 2, raw = TRUE))^2, data = selected_data, nfold = 3, use.model.frame = TRUE)
+d_model <- glmnetUtils::cv.glmnet(t12_drink ~ (t12_slfhlth + t12_slfmem + poly(t12_pla_tot, 2, raw = TRUE))^2, data = selected_data, nfold = 3, use.model.frame = TRUE)
 
 #Step #3 
 # Step 3
